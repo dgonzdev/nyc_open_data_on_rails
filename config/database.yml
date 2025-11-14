@@ -17,8 +17,10 @@ default: &default
   encoding: unicode
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
+  host: db
+  username: postgres
+  password: password
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-
 
 development:
   <<: *default
@@ -57,6 +59,7 @@ development:
 test:
   <<: *default
   database: nyc_open_data_test
+  host: <%= ENV['RDS_HOSTNAME'] || 'db' %>
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -80,6 +83,8 @@ test:
 #
 production:
   <<: *default
-  database: nyc_open_data_production
-  username: nyc_open_data
-  password: <%= ENV["NYC_OPEN_DATA_DATABASE_PASSWORD"] %>
+  database: <%= ENV['RDS_DB_NAME'] %>
+  host: <%= ENV['RDS_HOSTNAME'] %>
+  port: <%= ENV['RDS_PORT'] %>
+  username: <%= ENV['RDS_USERNAME'] %>
+  password: <%= ENV['RDS_PASSWORD'] %>
