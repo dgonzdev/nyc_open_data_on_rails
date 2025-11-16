@@ -36,6 +36,7 @@ storage/
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+./config/master.key
 
 web-variables.env
 ./web-variables.env
