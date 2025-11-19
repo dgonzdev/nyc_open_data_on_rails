@@ -1,0 +1,2 @@
+class NycPermittedEventInformation < ApplicationRecord
+end
