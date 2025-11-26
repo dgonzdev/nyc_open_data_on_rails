@@ -10,7 +10,7 @@ module Etl
 
           transform Tasks::Transforms::PrimaryDb::FilterExistingRecordsTransform, **config[:transform_config]
 
-          destination Tasks::Destinations::PrimaryDb::TableDestination, DepartmentOfTransportation::BicycleCounter
+          destination Tasks::Destinations::PrimaryDb::TableDestination, **config[:destination_config]
         end
       end
     end

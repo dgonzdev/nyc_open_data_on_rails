@@ -91,6 +91,9 @@ module DepartmentOfTransportation
         transform_config: {
           model: ::DepartmentOfTransportation::BicycleCounter,
           search_keys: [[:original_id, :id]]
+        },
+        destination_config: {
+          model: ::DepartmentOfTransportation::BicycleCounter
         }
       })
     end
