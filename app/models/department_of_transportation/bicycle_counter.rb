@@ -90,10 +90,23 @@ module DepartmentOfTransportation
         },
         transform_config: {
           model: ::DepartmentOfTransportation::BicycleCounter,
-          search_keys: [[:original_id, :id]]
+          search_keys: [
+            [:original_id, :id]
+          ]
         },
         destination_config: {
-          model: ::DepartmentOfTransportation::BicycleCounter
+          model: ::DepartmentOfTransportation::BicycleCounter,
+          column_keys: [
+            [:original_id, :id],
+            [:name, :name],
+            [:domain, :domain],
+            [:latitude, :latitude],
+            [:longitude, :longitude],
+            [:interval, :interval],
+            [:timezone, :timezone],
+            [:sens, :sens],
+            [:counter, :counter]
+          ]
         }
       })
     end
