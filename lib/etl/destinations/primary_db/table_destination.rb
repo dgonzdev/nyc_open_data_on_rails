@@ -1,7 +1,7 @@
 module Etl
   module Destinations
     module PrimaryDb
-      class BicycleCounterDestination
+      class TableDestination
         attr_reader :model
 
         # https://github.com/thbar/kiba/wiki/Implementing-ETL-destinations
