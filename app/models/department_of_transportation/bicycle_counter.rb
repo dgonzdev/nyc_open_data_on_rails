@@ -87,6 +87,9 @@ module DepartmentOfTransportation
       Etl::Workflows::CsvSoda2IntoPrimaryDbWorkflow.setup({
         source_config: {
           remote_url: CSV_SODA2_API_ENDPOINT
+        },
+        transform_config: {
+          model: ::DepartmentOfTransportation::BicycleCounter
         }
       })
     end

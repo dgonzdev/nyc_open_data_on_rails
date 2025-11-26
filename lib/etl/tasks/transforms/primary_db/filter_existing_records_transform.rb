@@ -6,7 +6,7 @@ module Etl
           attr_reader :model
 
           # https://github.com/thbar/kiba/wiki/Implementing-ETL-transforms
-          def initialize(model)
+          def initialize(model:)
             @model = model
           end
 
