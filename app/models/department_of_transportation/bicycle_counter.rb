@@ -83,32 +83,8 @@ module DepartmentOfTransportation
       end
     end
 
-    def self.import_from_csv_soda2_kiba_workflow
-      Etl::WorkflowTemplates::CsvSoda2IntoPrimaryDbWorkflowTemplate.setup({
-        source_config: {
-          remote_url: CSV_SODA2_API_ENDPOINT
-        },
-        transform_config: {
-          model: ::DepartmentOfTransportation::BicycleCounter,
-          search_keys: [
-            [:original_id, :id]
-          ]
-        },
-        destination_config: {
-          model: ::DepartmentOfTransportation::BicycleCounter,
-          column_keys: [
-            [:original_id, :id],
-            [:name, :name],
-            [:domain, :domain],
-            [:latitude, :latitude],
-            [:longitude, :longitude],
-            [:interval, :interval],
-            [:timezone, :timezone],
-            [:sens, :sens],
-            [:counter, :counter]
-          ]
-        }
-      })
+    def self.import_from_csv_soda2_kiba
+      Etl::Runners::BicycleCountersIntoPrimaryDb.run
     end
   end
 end
