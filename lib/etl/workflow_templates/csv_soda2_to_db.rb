@@ -1,6 +1,6 @@
 module Etl
   module WorkflowTemplates
-    module CsvSoda2IntoDb
+    module CsvSoda2ToDb
       module_function
 
       # https://github.com/thbar/kiba/wiki/How-to-define-ETL-jobs-with-Kiba
