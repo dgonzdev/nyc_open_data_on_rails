@@ -15,9 +15,16 @@ services:
     tty: true
     depends_on:
       - db
+      - analytics_db
   db:
     image: postgres:17.6
     environment:
       - POSTGRES_PASSWORD=password
     volumes:
       - ./tmp/db:/var/lib/postgresql/data
+  analytics_db:
+    image: postgres:17.6
+    environment:
+      - POSTGRES_PASSWORD=password
+    volumes:
+      - ./tmp/analytics_db:/var/lib/postgresql/data

@@ -23,8 +23,23 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
-  <<: *default
-  database: nyc_open_data_development
+  primary:
+    database: nyc_open_data_development
+    adapter: postgresql
+    encoding: unicode
+    host: db
+    username: postgres
+    password: password
+    pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  analytics:
+    database: nyc_open_data_analytics_development
+    adapter: postgresql
+    encoding: unicode
+    host: analytics_db
+    username: postgres
+    password: password
+    pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+    migrations_paths: db/analytics_migrate
 
   # The specified database role being used to connect to PostgreSQL.
   # To create additional roles in PostgreSQL see `$ createuser --help`.
@@ -57,9 +72,23 @@ development:
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
-  <<: *default
-  database: nyc_open_data_test
-  host: <%= ENV['RDS_HOSTNAME'] || 'db' %>
+  primary:
+    database: nyc_open_data_test
+    adapter: postgresql
+    encoding: unicode
+    host: <%= ENV['RDS_HOSTNAME'] || 'db' %>
+    username: postgres
+    password: password
+    pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  analytics:
+    database: nyc_open_data_analytics_test
+    adapter: postgresql
+    encoding: unicode
+    host: <%= ENV['ANALYTICS_RDS_HOSTNAME'] || 'analytics_db' %>
+    username: postgres
+    password: password
+    pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+    migrations_paths: db/analytics_migrate
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -82,9 +111,22 @@ test:
 # for a full overview on how database connection configuration can be specified.
 #
 production:
-  <<: *default
-  database: <%= ENV['RDS_DB_NAME'] %>
-  host: <%= ENV['RDS_HOSTNAME'] %>
-  port: <%= ENV['RDS_PORT'] %>
-  username: <%= ENV['RDS_USERNAME'] %>
-  password: <%= ENV['RDS_PASSWORD'] %>
+  primary:
+    database: <%= ENV['RDS_DB_NAME'] %>
+    adapter: postgresql
+    encoding: unicode
+    host: <%= ENV['RDS_HOSTNAME'] %>
+    port: <%= ENV['RDS_PORT'] %>
+    username: <%= ENV['RDS_USERNAME'] %>
+    password: <%= ENV['RDS_PASSWORD'] %>
+    pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  analytics:
+    database: <%= ENV['ANALYTICS_RDS_DB_NAME'] %>
+    adapter: postgresql
+    encoding: unicode
+    host: <%= ENV['ANALYTICS_RDS_HOSTNAME'] %>
+    port: <%= ENV['ANALYTICS_RDS_PORT'] %>
+    username: <%= ENV['ANALYTICS_RDS_USERNAME'] %>
+    password: <%= ENV['ANALYTICS_RDS_PASSWORD'] %>
+    pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+    migrations_paths: db/analytics_migrate
