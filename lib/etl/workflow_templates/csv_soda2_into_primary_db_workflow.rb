@@ -1,5 +1,5 @@
 module Etl
-  module Workflows
+  module WorkflowTemplates
     module CsvSoda2IntoPrimaryDbWorkflow
       module_function
 

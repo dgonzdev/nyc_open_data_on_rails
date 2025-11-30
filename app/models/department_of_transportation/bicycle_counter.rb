@@ -84,7 +84,7 @@ module DepartmentOfTransportation
     end
 
     def self.import_from_csv_soda2_kiba_workflow
-      Etl::Workflows::CsvSoda2IntoPrimaryDbWorkflow.setup({
+      Etl::WorkflowTemplates::CsvSoda2IntoPrimaryDbWorkflow.setup({
         source_config: {
           remote_url: CSV_SODA2_API_ENDPOINT
         },
