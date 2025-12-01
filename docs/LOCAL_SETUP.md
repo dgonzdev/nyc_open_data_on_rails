@@ -62,7 +62,7 @@ Remember to create a corresponding Rails model in app/models/analytics/.
 
 ## Import Data into the Primary DB
 
-Todo
+TODO
 
 ## Import Data into the Primary DB with Kiba
 
