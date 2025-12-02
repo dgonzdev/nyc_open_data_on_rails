@@ -82,7 +82,7 @@ module DepartmentOfTransportation
     end
 
     def self.import_from_csv_soda2_kiba
-      Etl::Runners::BicycleCountersIntoPrimaryDb.run
+      Etl::Runners::BicycleCountersCsvSoda2ToPrimaryDb.run
     end
 
     # Note: The headers are different between the soda2 and soda3 csv files
