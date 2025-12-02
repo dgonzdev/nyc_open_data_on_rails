@@ -6,7 +6,13 @@
 
 Please follow VSCode's instructions for installing Docker, https://code.visualstudio.com/docs/devcontainers/containers#_installation.
 
+<!-- web-variables.env -->
+
 Note: VSCode is not required for developing this application.
+
+### Socrata
+
+https://support.socrata.com/hc/en-us/articles/210138558-Generating-App-Tokens-and-API-Keys
 
 ## Build
 

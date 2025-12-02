@@ -6,6 +6,7 @@ module DepartmentOfTransportation
     self.table_name = :bicycle_counters
 
     CSV_SODA2_API_ENDPOINT = "https://data.cityofnewyork.us/resource/smn3-rzf9.csv"
+    CSV_SODA3_API_ENDPOINT = "https://data.cityofnewyork.us/api/v3/views/smn3-rzf9/query.csv"
 
     def self.url
       "https://data.cityofnewyork.us/Transportation/Bicycle-Counters/smn3-rzf9/about_data"
@@ -85,6 +86,47 @@ module DepartmentOfTransportation
 
     def self.import_from_csv_soda2_kiba
       Etl::Runners::BicycleCountersIntoPrimaryDb.run
+    end
+
+    # Note: The headers are different for the soda2 csv vs the soda3 csv
+    def self.import_from_csv_soda3
+      username = ENV['SOCRATA_API_KEY_ID']
+      password = ENV['SOCRATA_API_KEY_SECRET']
+      credentials = Base64.strict_encode64("#{username}:#{password}")
+      authorization_header = "Basic #{credentials}"
+
+      CSV.new(
+        URI.open(
+          CSV_SODA3_API_ENDPOINT, {
+            'Authorization' => authorization_header
+        }),
+        headers: true,
+        header_converters: :symbol
+      ).each do |row|
+          original_id = row[4]
+          name = row[5]
+          domain = row[6]
+          latitude = row[7]
+          longitude = row[8]
+          interval = row[9]
+          timezone = row[10]
+          sens = row[11]
+          counter = row[12]
+
+          next if BicycleCounter.find_by(original_id: original_id).present?
+
+          BicycleCounter.create!(
+            original_id: original_id,
+            name: name,
+            domain: domain,
+            latitude: latitude,
+            longitude: longitude,
+            interval: interval,
+            timezone: timezone,
+            sens: sens,
+            counter: counter
+          )
+      end
     end
   end
 end
