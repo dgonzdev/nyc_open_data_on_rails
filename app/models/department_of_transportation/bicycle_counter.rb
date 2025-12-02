@@ -52,7 +52,7 @@ module DepartmentOfTransportation
 
     # Import
     def self.import_from_csv_soda2
-      csv = RemoteCSV.open(CSV_SODA2_API_ENDPOINT)
+      csv = RemoteCsv.open(CSV_SODA2_API_ENDPOINT)
 
       csv.each do |row|
         original_id = row[0]
@@ -87,7 +87,7 @@ module DepartmentOfTransportation
 
     # Note: The headers are different between the soda2 and soda3 csv files
     def self.import_from_csv_soda3
-      csv = RemoteCSV.open(CSV_SODA3_API_ENDPOINT, soda_version: 3)
+      csv = RemoteCsv.open(CSV_SODA3_API_ENDPOINT, soda_version: 3)
 
       csv.each do |row|
         original_id = row[4]
