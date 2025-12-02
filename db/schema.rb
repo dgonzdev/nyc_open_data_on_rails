@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_11_19_214325) do
+ActiveRecord::Schema[7.2].define(version: 2025_12_02_211204) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -44,6 +44,6 @@ ActiveRecord::Schema[7.2].define(version: 2025_11_19_214325) do
     t.string "police_precinct"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["event_id"], name: "index_nyc_permitted_event_informations_on_event_id", unique: true
+    t.index ["event_id", "start_date_time", "end_date_time"], name: "idx_on_event_id_start_date_time_end_date_time_52b05f6aff", unique: true
   end
 end

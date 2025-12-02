@@ -9,7 +9,9 @@ module Etl
           transform_config: {
             model: ::OfficeOfCitywideEventCoordinationAndManagement::NycPermittedEventInformation,
             search_keys: [
-              [:event_id, :event_id]
+              [:event_id, :event_id],
+              [:start_date_time, :start_date_time],
+              [:end_date_time, :end_date_time]
             ]
           },
           destination_config: {

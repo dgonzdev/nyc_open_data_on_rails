@@ -68,7 +68,11 @@ module OfficeOfCitywideEventCoordinationAndManagement
         community_board = row[10]
         police_precinct = row[11]
 
-        next if NycPermittedEventInformation.find_by(event_id: event_id).present?
+        next if NycPermittedEventInformation.where(
+          event_id: event_id,
+          start_date_time: start_date_time,
+          end_date_time: end_date_time
+        ).any?
 
         NycPermittedEventInformation.create!(
           event_id: event_id,
@@ -109,7 +113,11 @@ module OfficeOfCitywideEventCoordinationAndManagement
         community_board = row[14]
         police_precinct = row[15]
 
-        next if NycPermittedEventInformation.find_by(event_id: event_id).present?
+        next if NycPermittedEventInformation.where(
+          event_id: event_id,
+          start_date_time: start_date_time,
+          end_date_time: end_date_time
+        ).any?
 
         NycPermittedEventInformation.create!(
           event_id: event_id,
