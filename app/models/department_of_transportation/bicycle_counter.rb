@@ -1,6 +1,8 @@
 require 'open-uri'
 require 'csv'
 
+require 'remote_csv/soda3'
+
 module DepartmentOfTransportation
   class BicycleCounter < ApplicationRecord
     self.table_name = :bicycle_counters
@@ -88,44 +90,34 @@ module DepartmentOfTransportation
       Etl::Runners::BicycleCountersIntoPrimaryDb.run
     end
 
-    # Note: The headers are different for the soda2 csv vs the soda3 csv
+    # Note: The headers are different between the soda2 csv and the soda3 csv files
     def self.import_from_csv_soda3
-      username = ENV['SOCRATA_API_KEY_ID']
-      password = ENV['SOCRATA_API_KEY_SECRET']
-      credentials = Base64.strict_encode64("#{username}:#{password}")
-      authorization_header = "Basic #{credentials}"
+      csv = ::RemoteCSV::Soda3.build(CSV_SODA3_API_ENDPOINT)
 
-      CSV.new(
-        URI.open(
-          CSV_SODA3_API_ENDPOINT, {
-            'Authorization' => authorization_header
-        }),
-        headers: true,
-        header_converters: :symbol
-      ).each do |row|
-          original_id = row[4]
-          name = row[5]
-          domain = row[6]
-          latitude = row[7]
-          longitude = row[8]
-          interval = row[9]
-          timezone = row[10]
-          sens = row[11]
-          counter = row[12]
+      csv.each do |row|
+        original_id = row[4]
+        name = row[5]
+        domain = row[6]
+        latitude = row[7]
+        longitude = row[8]
+        interval = row[9]
+        timezone = row[10]
+        sens = row[11]
+        counter = row[12]
 
-          next if BicycleCounter.find_by(original_id: original_id).present?
+        next if BicycleCounter.find_by(original_id: original_id).present?
 
-          BicycleCounter.create!(
-            original_id: original_id,
-            name: name,
-            domain: domain,
-            latitude: latitude,
-            longitude: longitude,
-            interval: interval,
-            timezone: timezone,
-            sens: sens,
-            counter: counter
-          )
+        BicycleCounter.create!(
+          original_id: original_id,
+          name: name,
+          domain: domain,
+          latitude: latitude,
+          longitude: longitude,
+          interval: interval,
+          timezone: timezone,
+          sens: sens,
+          counter: counter
+        )
       end
     end
   end
