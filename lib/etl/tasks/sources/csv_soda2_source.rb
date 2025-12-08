@@ -1,5 +1,4 @@
-require 'open-uri'
-require 'csv'
+require 'remote_dataset/csv/soda2'
 
 module Etl
   module Tasks
@@ -13,11 +12,9 @@ module Etl
         end
 
         def each
-          CSV.new(
-            URI.open(csv_soda2_url),
-            headers: true,
-            header_converters: :symbol
-          ).each do |row|
+          csv = RemoteDataset::Csv::Soda2.new(remote_url: csv_soda2_url)
+
+          csv.each do |row|
             yield(row.to_hash)
           end
         end
