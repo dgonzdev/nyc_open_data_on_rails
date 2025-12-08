@@ -17,24 +17,25 @@ module RemoteDataset
 
       def each
         _page_number = 1
-        # _offset = (_page_number - 1) * page_size
 
-        username = ENV['SOCRATA_API_KEY_ID']
-        password = ENV['SOCRATA_API_KEY_SECRET']
-        credentials = Base64.strict_encode64("#{username}:#{password}")
-        authorization_header = "Basic #{credentials}"
+        # username = ENV['SOCRATA_API_KEY_ID']
+        # password = ENV['SOCRATA_API_KEY_SECRET']
+        # credentials = Base64.strict_encode64("#{username}:#{password}")
+        # authorization_header = "Basic #{credentials}"
 
-        uri = URI(remote_url)
-        data = {
-          "query": "SELECT *",
-          "page": {
-            "pageNumber": _page_number,
-            "pageSize": page_size
-          }
-        }.to_json
-        headers = { 'Authorization' => authorization_header, 'content-type' => 'application/json' }
+        # uri = URI(remote_url)
+        # data = {
+        #   "query": "SELECT *",
+        #   "page": {
+        #     "pageNumber": _page_number,
+        #     "pageSize": page_size
+        #   }
+        # }.to_json
+        # headers = { 'Authorization' => authorization_header, 'content-type' => 'application/json' }
 
-        response = Net::HTTP.post(uri, data, headers)
+        # response = Net::HTTP.post(uri, data, headers)
+
+        response = api_call(_page_number)
 
         csv = CSV.new(
           response.body,
@@ -50,19 +51,20 @@ module RemoteDataset
           end
 
           _page_number += 1
-          # _offset = (_page_number - 1) * page_size
 
-          uri = URI(remote_url)
-          data = {
-            "query": "SELECT *",
-            "page": {
-              "pageNumber": _page_number,
-              "pageSize": page_size
-            }
-          }.to_json
-          headers = { 'Authorization' => authorization_header, 'content-type' => 'application/json' }
+          # uri = URI(remote_url)
+          # data = {
+          #   "query": "SELECT *",
+          #   "page": {
+          #     "pageNumber": _page_number,
+          #     "pageSize": page_size
+          #   }
+          # }.to_json
+          # headers = { 'Authorization' => authorization_header, 'content-type' => 'application/json' }
 
-          response = Net::HTTP.post(uri, data, headers)
+          # response = Net::HTTP.post(uri, data, headers)
+
+          response = api_call(_page_number)
 
           csv = CSV.new(
             response.body,
@@ -70,6 +72,27 @@ module RemoteDataset
             header_converters: :symbol
           )
         end
+      end
+
+      private
+
+      def api_call(_page_number)
+        username = ENV['SOCRATA_API_KEY_ID']
+        password = ENV['SOCRATA_API_KEY_SECRET']
+        credentials = Base64.strict_encode64("#{username}:#{password}")
+        authorization_header = "Basic #{credentials}"
+
+        uri = URI(remote_url)
+        data = {
+          "query": "SELECT *",
+          "page": {
+            "pageNumber": _page_number,
+            "pageSize": page_size
+          }
+        }.to_json
+        headers = { 'Authorization' => authorization_header, 'content-type' => 'application/json' }
+
+        Net::HTTP.post(uri, data, headers)
       end
     end
   end
