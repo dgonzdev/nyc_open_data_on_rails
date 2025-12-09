@@ -1,6 +1,6 @@
 module Etl
   module Runners
-    class BicycleCountersIntoPrimaryDb
+    class BicycleCountersCsvSoda2IntoPrimaryDb
       def self.run
         job = Etl::WorkflowTemplates::CsvSoda2IntoPrimaryDb.setup({
           source_config: {
