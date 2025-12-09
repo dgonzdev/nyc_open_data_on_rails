@@ -135,5 +135,9 @@ module OfficeOfCitywideEventCoordinationAndManagement
         )
       end
     end
+
+    def self.import_from_csv_soda3_kiba
+      Etl::Runners::NycPermittedEventInformationCsvSoda3IntoPrimaryDb.run
+    end
   end
 end
