@@ -96,7 +96,6 @@ module OfficeOfCitywideEventCoordinationAndManagement
       Etl::Runners::NycPermittedEventInformationCsvSoda2IntoPrimaryDb.run
     end
 
-    # Note: The headers are different between the soda2 and soda3 csv files
     def self.import_from_csv_soda3
       csv = RemoteDataset::Csv::Soda3.new(remote_url: CSV_SODA3_API_ENDPOINT)
 
