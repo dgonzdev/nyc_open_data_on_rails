@@ -1,9 +1,8 @@
-require 'open-uri'
-require 'csv'
+require 'net/http'
 
 module RemoteDataset
-  module Csv
-    class Soda2
+  module Soda2
+    class Json
       attr_reader :remote_url
       attr_reader :page_number
       attr_reader :page_size
@@ -20,16 +19,10 @@ module RemoteDataset
 
         response = api_call(_page_number, _offset)
 
-        csv = CSV.new(
-          response,
-          headers: true,
-          header_converters: :symbol
-        )
+        data = JSON.parse(response.body)
 
-        while csv.count > 0
-          csv.rewind
-
-          csv.each do |row|
+        while data.size > 0
+          data.each do |row|
             yield row
           end
 
@@ -38,11 +31,7 @@ module RemoteDataset
 
           response = api_call(_page_number, _offset)
 
-          csv = CSV.new(
-            response,
-            headers: true,
-            header_converters: :symbol
-          )
+          data = JSON.parse(response.body)
         end
       end
 
@@ -51,8 +40,7 @@ module RemoteDataset
       def api_call(_page_number, _offset)
         uri = URI(remote_url)
         uri.query = URI.encode_www_form({ "$limit" => page_size, "$offset" => _offset })
-        remote_url_with_pagination = uri.to_s
-        URI.open(remote_url_with_pagination)
+        Net::HTTP.get_response(uri)
       end
     end
   end

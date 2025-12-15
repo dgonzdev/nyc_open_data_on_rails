@@ -1,5 +1,3 @@
-require 'remote_dataset/csv/soda2'
-
 module Etl
   module Tasks
     module Sources
@@ -12,7 +10,7 @@ module Etl
         end
 
         def each
-          csv = RemoteDataset::Csv::Soda2.new(remote_url: csv_soda2_url)
+          csv = RemoteDataset::Soda2::Csv.new(remote_url: csv_soda2_url)
 
           csv.each do |row|
             yield(row.to_hash)
