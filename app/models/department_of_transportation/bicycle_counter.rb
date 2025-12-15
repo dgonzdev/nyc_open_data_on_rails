@@ -202,23 +202,25 @@ module DepartmentOfTransportation
       end
 
       if api_version == '2' && content_type == 'csv'
-        import_from_csv_soda2_kiba
+        run_import_soda2_csv
       end
 
       if api_version == '3' && content_type == 'json'
       end
 
       if api_version == '3' && content_type == 'csv'
-        import_from_csv_soda3_kiba
+        run_import_soda3_csv
       end
     end
 
-    def self.import_from_csv_soda2_kiba
+    def self.run_import_soda2_csv
       Etl::Runners::BicycleCountersCsvSoda2IntoPrimaryDb.run
     end
+    private_class_method :run_import_soda2_csv
 
-    def self.import_from_csv_soda3_kiba
+    def self.run_import_soda3_csv
       Etl::Runners::BicycleCountersCsvSoda3IntoPrimaryDb.run
     end
+    private_class_method :run_import_soda3_csv
   end
 end
