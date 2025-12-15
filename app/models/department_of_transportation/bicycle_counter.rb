@@ -69,7 +69,7 @@ module DepartmentOfTransportation
       end
 
       if api_version == '3' && content_type == 'csv'
-        import_from_csv_soda3
+        import_soda3_csv
       end
     end
 
@@ -166,8 +166,8 @@ module DepartmentOfTransportation
     end
     private_class_method :import_soda3
 
-    def self.import_from_csv_soda3
-      csv = RemoteDataset::Csv::Soda3.new(remote_url: CSV_SODA3_API_ENDPOINT)
+    def self.import_soda3_csv
+      csv = RemoteDataset::Csv::Soda3.new(remote_url: SODA3_CSV_API_ENDPOINT)
 
       csv.each do |row|
         original_id = row[0]
@@ -195,7 +195,7 @@ module DepartmentOfTransportation
         )
       end
     end
-    private_class_method :import_from_csv_soda3
+    private_class_method :import_soda3_csv
 
     def self.import_from_csv_soda2_kiba
       Etl::Runners::BicycleCountersCsvSoda2IntoPrimaryDb.run
