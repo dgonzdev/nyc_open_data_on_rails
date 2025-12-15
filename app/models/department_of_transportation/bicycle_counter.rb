@@ -61,7 +61,7 @@ module DepartmentOfTransportation
       end
 
       if api_version == '2' && content_type == 'csv'
-        import_from_csv_soda2
+        import_soda2_csv
       end
 
       if api_version == '3' && content_type == 'json'
@@ -104,8 +104,8 @@ module DepartmentOfTransportation
     end
     private_class_method :import_soda2
 
-    def self.import_from_csv_soda2
-      csv = RemoteDataset::Csv::Soda2.new(remote_url: CSV_SODA2_API_ENDPOINT)
+    def self.import_soda2_csv
+      csv = RemoteDataset::Csv::Soda2.new(remote_url: SODA2_CSV_API_ENDPOINT)
 
       csv.each do |row|
         original_id = row[0]
@@ -133,7 +133,7 @@ module DepartmentOfTransportation
         )
       end
     end
-    private_class_method :import_from_csv_soda2
+    private_class_method :import_soda2_csv
 
     def self.import_soda3
       data = RemoteDataset::Json::Soda3.new(remote_url: SODA3_API_ENDPOINT)
