@@ -1,6 +1,3 @@
-require 'remote_dataset/csv/soda2'
-require 'remote_dataset/csv/soda3'
-
 module DepartmentOfTransportation
   class BicycleCounter < ApplicationRecord
     self.table_name = :bicycle_counters
@@ -74,7 +71,7 @@ module DepartmentOfTransportation
     end
 
     def self.import_soda2
-      data = RemoteDataset::Json::Soda2.new(remote_url: SODA2_API_ENDPOINT)
+      data = RemoteDataset::Soda2::Json.new(remote_url: SODA2_API_ENDPOINT)
 
       data.each do |row|
         original_id = row["id"]
@@ -105,7 +102,7 @@ module DepartmentOfTransportation
     private_class_method :import_soda2
 
     def self.import_soda2_csv
-      csv = RemoteDataset::Csv::Soda2.new(remote_url: SODA2_CSV_API_ENDPOINT)
+      csv = RemoteDataset::Soda2::Csv.new(remote_url: SODA2_CSV_API_ENDPOINT)
 
       csv.each do |row|
         original_id = row[0]
@@ -136,7 +133,7 @@ module DepartmentOfTransportation
     private_class_method :import_soda2_csv
 
     def self.import_soda3
-      data = RemoteDataset::Json::Soda3.new(remote_url: SODA3_API_ENDPOINT)
+      data = RemoteDataset::Soda3::Json.new(remote_url: SODA3_API_ENDPOINT)
 
       data.each do |row|
         original_id = row["id"]
@@ -167,7 +164,7 @@ module DepartmentOfTransportation
     private_class_method :import_soda3
 
     def self.import_soda3_csv
-      csv = RemoteDataset::Csv::Soda3.new(remote_url: SODA3_CSV_API_ENDPOINT)
+      csv = RemoteDataset::Soda3::Csv.new(remote_url: SODA3_CSV_API_ENDPOINT)
 
       csv.each do |row|
         original_id = row[0]

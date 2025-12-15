@@ -1,6 +1,3 @@
-require 'remote_dataset/csv/soda2'
-require 'remote_dataset/csv/soda3'
-
 module OfficeOfCitywideEventCoordinationAndManagement
   class NycPermittedEventInformation < ApplicationRecord
     self.table_name = :nyc_permitted_event_informations
@@ -74,7 +71,7 @@ module OfficeOfCitywideEventCoordinationAndManagement
     end
 
     def self.import_soda2
-      data = RemoteDataset::Json::Soda2.new(remote_url: SODA2_API_ENDPOINT)
+      data = RemoteDataset::Soda2::Json.new(remote_url: SODA2_API_ENDPOINT)
 
       data.each do |row|
         event_id = row["event_id"]
@@ -115,7 +112,7 @@ module OfficeOfCitywideEventCoordinationAndManagement
     private_class_method :import_soda2
 
     def self.import_soda2_csv
-      csv = RemoteDataset::Csv::Soda2.new(remote_url: SODA2_CSV_API_ENDPOINT)
+      csv = RemoteDataset::Soda2::Csv.new(remote_url: SODA2_CSV_API_ENDPOINT)
 
       csv.each do |row|
         event_id = row[0]
@@ -156,7 +153,7 @@ module OfficeOfCitywideEventCoordinationAndManagement
     private_class_method :import_soda2_csv
 
     def self.import_soda3
-      data = RemoteDataset::Json::Soda3.new(remote_url: SODA3_API_ENDPOINT)
+      data = RemoteDataset::Soda3::Json.new(remote_url: SODA3_API_ENDPOINT)
 
       data.each do |row|
         event_id = row["event_id"]
@@ -197,7 +194,7 @@ module OfficeOfCitywideEventCoordinationAndManagement
     private_class_method :import_soda3
 
     def self.import_soda3_csv
-      csv = RemoteDataset::Csv::Soda3.new(remote_url: SODA3_CSV_API_ENDPOINT)
+      csv = RemoteDataset::Soda3::Csv.new(remote_url: SODA3_CSV_API_ENDPOINT)
 
       csv.each do |row|
         event_id = row[0]

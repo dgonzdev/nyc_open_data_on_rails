@@ -3,8 +3,8 @@ require 'net/http'
 require 'csv'
 
 module RemoteDataset
-  module Csv
-    class Soda3
+  module Soda3
+    class Csv
       attr_reader :remote_url
       attr_reader :page_number
       attr_reader :page_size
