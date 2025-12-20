@@ -16,24 +16,20 @@ The datasets can be requested as either json or csv files.
 
 #### SODA2
 
-JSON:
 ```
 DepartmentOfTransportation::BicycleCounter.import(api_version: '2', content_type: 'json')
 ```
 
-CSV:
 ```
 DepartmentOfTransportation::BicycleCounter.import(api_version: '2', content_type: 'csv')
 ```
 
 #### SODA3
 
-JSON:
 ```
 DepartmentOfTransportation::BicycleCounter.import(api_version: '3', content_type: 'json')
 ```
 
-CSV:
 ```
 DepartmentOfTransportation::BicycleCounter.import(api_version: '3', content_type: 'csv')
 ```
@@ -46,24 +42,20 @@ It was implemented to demonstrate how to use the Kiba library to define/run ETL 
 
 #### SODA2
 
-JSON:
 ```
 DepartmentOfTransportation::BicycleCounter.run_import(api_version: '2', content_type: 'json')
 ```
 
-CSV:
 ```
 DepartmentOfTransportation::BicycleCounter.run_import(api_version: '2', content_type: 'csv')
 ```
 
 #### SODA3
 
-JSON:
 ```
 DepartmentOfTransportation::BicycleCounter.run_import(api_version: '3', content_type: 'json')
 ```
 
-CSV:
 ```
 DepartmentOfTransportation::BicycleCounter.run_import(api_version: '3', content_type: 'csv')
 ```
