@@ -10,7 +10,7 @@ The models contain the following class methods to pull a dataset from the NYC Op
 
 ### import
 
-The import method supports importing datasets through Socrata's SODA2 and SODA3 APIs.
+The import method supports pulling datasets with Socrata's SODA2 and SODA3 APIs.
 
 The datasets can be requested as either json or csv files.
 
@@ -18,6 +18,24 @@ The datasets can be requested as either json or csv files.
 
 ```
 DepartmentOfTransportation::BicycleCounter.import(api_version: '2', content_type: 'json')
+```
+
+#### SODA2 and CSV
+
+```
+DepartmentOfTransportation::BicycleCounter.import(api_version: '2', content_type: 'csv')
+```
+
+#### SODA3 and JSON
+
+```
+DepartmentOfTransportation::BicycleCounter.import(api_version: '3', content_type: 'json')
+```
+
+#### SODA3 and CSV
+
+```
+DepartmentOfTransportation::BicycleCounter.import(api_version: '3', content_type: 'csv')
 ```
 
 ## Dataset Properties
