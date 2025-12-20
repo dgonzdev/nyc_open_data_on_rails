@@ -19,11 +19,13 @@ TODO
 
 TODO
 
-## Kiba
-
-TODO
-
 ## Multiple databases
 
 TODO
 - https://guides.rubyonrails.org/active_record_multiple_databases.html
+
+## Kiba
+
+TODO
+
+## BI
