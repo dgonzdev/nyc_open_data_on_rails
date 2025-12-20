@@ -1,19 +1,43 @@
 # nyc_open_data
 
-## Overview
-
 The purpose of this project is to empower you to
 - create your own copy of NYC Open Data
 - create and share ETL workflows with the NYC civic tech community
 - explore NYC Open Data and your ETL output with open source BI solutions
 
+## Overview
+
+The project is a Ruby on Rails app with a Postgres database.
+
+Each dataset is represented as an ActiveRecord model.
+
+Create the database.
+
+```
+bundle exec rake db:create
+```
+
+Run migrations.
+
+```
+bundle exec rake db:migrate
+```
+
+Import a dataset.
+
+```
+DepartmentOfTransportation::BicycleCounter.import
+```
+
+You now have your own copy of the bicycle counter dataset!
+
 ## Local Setup
 
-Please read the [local setup guide](docs/LOCAL_SETUP.md) for instructions on how to run the project's rails app locally.
+The [local setup guide](docs/LOCAL_SETUP.md) provides detailed instructions on how to run the rails app locally.
 
 ## Core Concepts
 
-Please read the [core concepts document](docs/CORE_CONCEPTS.md) to learn about the main technologies we are leveraging.
+The [core concepts document](docs/CORE_CONCEPTS.md) details the main technologies we are leveraging.
 
 ## Create Your Own Copy of NYC Open Data
 
