@@ -4,7 +4,7 @@
 
 ### Docker
 
-Please follow VSCode's instructions for installing Docker, https://code.visualstudio.com/docs/devcontainers/containers#_installation.
+Follow VSCode's instructions for installing Docker, https://code.visualstudio.com/docs/devcontainers/containers#_installation.
 
 Then create a file named web-variables.env in the root folder of this project.
 
@@ -12,7 +12,7 @@ Note: VSCode is not required for developing this application.
 
 ### Socrata
 
-Please follow Socrata's instructions for creating an API KEY https://support.socrata.com/hc/en-us/articles/210138558-Generating-App-Tokens-and-API-Keys.
+Follow Socrata's instructions for creating an API KEY https://support.socrata.com/hc/en-us/articles/210138558-Generating-App-Tokens-and-API-Keys.
 
 Set the api key id and secret in the web-variables.env file like so
 
@@ -75,7 +75,13 @@ Remember to create a corresponding Rails model in app/models/analytics/.
 
 ## Import Data into the Primary DB
 
-TODO
+Import data into the primary db.
+
+```
+DepartmentOfTransportation::BicycleCounter.import
+```
+
+See [nyc open data](docs/YOUR_NYC_OPEN_DATA.md) for more information.
 
 ## Import Data into the Primary DB with Kiba
 
