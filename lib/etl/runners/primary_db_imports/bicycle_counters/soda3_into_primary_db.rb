@@ -1,6 +1,6 @@
 module Etl
   module Runners
-    module PrimaryDBImports
+    module PrimaryDbImports
       module BicycleCounters
         class Soda3IntoPrimaryDb
           def self.run
