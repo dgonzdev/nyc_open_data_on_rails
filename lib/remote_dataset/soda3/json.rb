@@ -1,8 +1,8 @@
 require 'net/http'
 
 module RemoteDataset
-  module Json
-    class Soda3
+  module Soda3
+    class Json
       attr_reader :remote_url
       attr_reader :page_number
       attr_reader :page_size
