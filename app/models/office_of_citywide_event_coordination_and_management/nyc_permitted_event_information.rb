@@ -236,6 +236,7 @@ module OfficeOfCitywideEventCoordinationAndManagement
 
     def self.run_import(api_version: '2', content_type: 'json')
       if api_version == '2' && content_type == 'json'
+        run_import_soda2
       end
 
       if api_version == '2' && content_type == 'csv'
@@ -243,6 +244,7 @@ module OfficeOfCitywideEventCoordinationAndManagement
       end
 
       if api_version == '3' && content_type == 'json'
+        run_import_soda3
       end
 
       if api_version == '3' && content_type == 'csv'
@@ -250,10 +252,20 @@ module OfficeOfCitywideEventCoordinationAndManagement
       end
     end
 
+    def self.run_import_soda2
+      Etl::Runners::NycPermittedEventInformationSoda2IntoPrimaryDb.run
+    end
+    private_class_method :run_import_soda2
+
     def self.run_import_soda2_csv
       Etl::Runners::NycPermittedEventInformationSoda2CsvIntoPrimaryDb.run
     end
     private_class_method :run_import_soda2_csv
+
+    def self.run_import_soda3
+      Etl::Runners::NycPermittedEventInformationSoda3IntoPrimaryDb.run
+    end
+    private_class_method :run_import_soda3
 
     def self.run_import_soda3_csv
       Etl::Runners::NycPermittedEventInformationSoda3CsvIntoPrimaryDb.run
