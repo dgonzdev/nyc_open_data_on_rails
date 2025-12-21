@@ -2,11 +2,11 @@ module Etl
   module Runners
     module PrimaryDBImports
       module BicycleCounters
-        class Soda3IntoPrimaryDb
+        class Soda2CsvIntoPrimaryDb
           def self.run
-            job = Etl::WorkflowTemplates::Soda3IntoPrimaryDb.setup({
+            job = Etl::WorkflowTemplates::Soda2CsvIntoPrimaryDb.setup({
               source_config: {
-                remote_url: ::DepartmentOfTransportation::BicycleCounter::SODA3_API_ENDPOINT
+                remote_url: ::DepartmentOfTransportation::BicycleCounter::SODA2_CSV_API_ENDPOINT
               },
               transform_config: {
                 model: ::DepartmentOfTransportation::BicycleCounter,
