@@ -49,9 +49,9 @@ TODO
 
 ## Explore NYC Open Data and Your ETL Output with Open Source BI Solutions
 
-The [bi solutions document](docs/BI.md) explains how to use Apache Superset to explore your copy of NYC Open Data.
+The [bi document](docs/BI.md) explains how to use Apache Superset to explore your copy of NYC Open Data.
 
-More solutions coming soon.
+More bi solutions coming soon.
 
 ## Production Deployments
 
