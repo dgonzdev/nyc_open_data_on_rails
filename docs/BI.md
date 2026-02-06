@@ -22,13 +22,13 @@ docker-compose up web
 
 #### Step 2
 
-Follow Apache Superset's instructions for downloading and starting superset locally
+Follow Apache Superset's instructions for downloading and starting superset locally:
 
 https://superset.apache.org/docs/quickstart/
 
 #### Step 3
 
-Sign into superset
+Sign into superset:
 
 http://localhost:8088/
 
@@ -43,14 +43,14 @@ Click Settings -> Databases Connections -> + Database.
 
 Select PostgreSQL.
 
-Run the following command to find the host
+Run the following command to find the host:
 
 ```
 ip addr show | grep docker0
 ```
 - https://stackoverflow.com/questions/73757001/connect-superset-to-postgresql-in-a-docker-container-the-port-is-closed
 
-Enter the following values for the remaining fields
+Enter the following values for the remaining fields:
 
 | Port  | Database name                | Username | Password | Display Name      |
 | ----- | ---------------------------- | -------- | -------- | ----------------- |
