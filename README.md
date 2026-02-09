@@ -41,11 +41,11 @@ The [core concepts document](docs/CORE_CONCEPTS.md) details the main technologie
 
 ## Create Your Own Copy of NYC Open Data
 
-The [nyc open data document](docs/YOUR_NYC_OPEN_DATA.md) explains how to run the ruby code that pulls datasets from the NYC Open Data portal and into your own Postgres instance.
+The [nyc open data document](docs/YOUR_NYC_OPEN_DATA.md) explains how to pull datasets from the NYC Open Data portal and into your own Postgres instance.
 
 ## Create and Share ETL Workflows with the NYC Civic Tech Community
 
-TODO
+The [etl document][docs/ETL.md] explains how to transform open data and store the results in your own Postgres instance.
 
 ## Explore NYC Open Data and Your ETL Output with Open Source BI Solutions
 
