@@ -23,7 +23,23 @@ lib/etl/workflows/
 
 ### Workflow Templates
 
+Workflow templates are configurable workflows.
+
+They live in
+
+```
+lib/etl/workflow_templates/
+```
+
 ### Sources
+
+Sources are sources of data.
+
+They live in
+
+```
+lib/etl/tasks/sources/
+```
 
 ### Transformations
 
