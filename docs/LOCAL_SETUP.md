@@ -103,7 +103,13 @@ See [nyc open data](YOUR_NYC_OPEN_DATA.md) for more information.
 
 ## Run ETL Workflows
 
-TODO
+Perform transformations on open data and store the results in the analytics database.
+
+```
+Etl::Runners::BicycleCountersSoda2CsvIntoAnalyticsDb.run
+```
+
+See [etl](ETL.md) for more information.
 
 ## Gotchas
 
