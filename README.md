@@ -45,7 +45,7 @@ The [nyc open data document](docs/YOUR_NYC_OPEN_DATA.md) explains how to pull da
 
 ## Create and Share ETL Workflows with the NYC Civic Tech Community
 
-The [etl document][docs/ETL.md] explains how to transform open data and store the results in your own Postgres instance.
+The [etl document](docs/ETL.md) explains how to transform open data and store the results in your own Postgres instance.
 
 ## Explore NYC Open Data and Your ETL Output with Open Source BI Solutions
 
