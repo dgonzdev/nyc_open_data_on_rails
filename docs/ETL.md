@@ -11,6 +11,8 @@ The DSL describes
 - how to transform it aka **transformations**
 - where to store the results aka **destinations**
 
+This project's Kiba jobs primarily write to the analytics database with one exception: the Kiba jobs that pull data from the NYC Open Data Portal and store an exact copy in the primary database.
+
 ### Workflows
 
 This project refers to Kiba jobs as workflows.
@@ -55,13 +57,17 @@ lib/etl/tasks/transformations/
 
 ### Destinations
 
-Destinations are the tables in the analytics database where we store the results of a single or series of transformation(s).
+Destinations are
+- the tables in the analytics database where we store the results of a single or series of transformation(s)
+- the tables in the primary database where we store the exact copies of the datasets from the NYC Open Data Portal
 
 They live in
 
 ```
 lib/etl/tasks/destinations/
 ```
+
+See [local setup guide](docs/LOCAL_SETUP.md) for information on how to create tables in the analytics and primary databases.
 
 ### Runners
 
