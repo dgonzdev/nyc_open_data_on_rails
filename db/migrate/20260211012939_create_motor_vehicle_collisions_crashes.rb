@@ -9,7 +9,7 @@ class CreateMotorVehicleCollisionsCrashes < ActiveRecord::Migration[7.2]
       t.decimal :longitude
       t.string :on_street_name
       t.string :off_street_name
-      # t.string :cross_street_name
+      t.string :cross_street_name
       t.integer :number_of_persons_injured
       t.integer :number_of_persons_killed
       t.integer :number_of_pedestrians_injured
