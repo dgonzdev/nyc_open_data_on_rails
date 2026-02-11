@@ -50,5 +50,55 @@ module PoliceDepartment
     def self.tags
       "nypd, collisions, bigapps, big apps, visionzero, vision, zero, nycopendata, traffic data"
     end
+
+    # Import
+    def self.import(api_version: '2', content_type: 'json')
+      if api_version == '2' && content_type == 'json'
+        import_soda2
+      end
+
+      # if api_version == '2' && content_type == 'csv'
+      #   import_soda2_csv
+      # end
+
+      # if api_version == '3' && content_type == 'json'
+      #   import_soda3
+      # end
+
+      # if api_version == '3' && content_type == 'csv'
+      #   import_soda3_csv
+      # end
+    end
+
+    def self.import_soda2
+      data = RemoteDataset::Soda2::Json.new(remote_url: SODA2_API_ENDPOINT)
+
+      # data.each do |row|
+      #   original_id = row["id"]
+      #   name = row["name"]
+      #   domain = row["domain"]
+      #   latitude = row["latitude"]
+      #   longitude = row["longitude"]
+      #   interval = row["interval"]
+      #   timezone = row["timezone"]
+      #   sens = row["sens"]
+      #   counter = row["counter"]
+
+      #   next if BicycleCounter.find_by(original_id: original_id).present?
+
+      #   BicycleCounter.create!(
+      #     original_id: original_id,
+      #     name: name,
+      #     domain: domain,
+      #     latitude: latitude,
+      #     longitude: longitude,
+      #     interval: interval,
+      #     timezone: timezone,
+      #     sens: sens,
+      #     counter: counter
+      #   )
+      # end
+    end
+    private_class_method :import_soda2
   end
 end
