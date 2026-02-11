@@ -73,31 +73,67 @@ module PoliceDepartment
     def self.import_soda2
       data = RemoteDataset::Soda2::Json.new(remote_url: SODA2_API_ENDPOINT)
 
-      # data.each do |row|
-      #   original_id = row["id"]
-      #   name = row["name"]
-      #   domain = row["domain"]
-      #   latitude = row["latitude"]
-      #   longitude = row["longitude"]
-      #   interval = row["interval"]
-      #   timezone = row["timezone"]
-      #   sens = row["sens"]
-      #   counter = row["counter"]
+      data.each do |row|
+        crash_date = row["crash_date"]
+        crash_time = row["crash_time"]
+        borough = row["borough"]
+        zip_code = row["zip_code"]
+        latitude = row["latitude"]
+        longitude = row["longitude"]
+        on_street_name = row["on_street_name"]
+        off_street_name = row["off_street_name"]
+        number_of_persons_injured = row["number_of_persons_injured"]
+        number_of_persons_killed = row["number_of_persons_killed"]
+        number_of_pedestrians_injured = row["number_of_pedestrians_injured"]
+        number_of_pedestrians_killed = row["number_of_pedestrians_killed"]
+        number_of_cyclist_injured = row ["number_of_cyclist_injured"]
+        number_of_cyclist_killed = row["number_of_cyclist_killed"]
+        number_of_motorist_injured = row["number_of_motorist_injured"]
+        number_of_motorist_killed = row["number_of_motorist_killed"]
+        contributing_factor_vehicle_1 = row["contributing_factor_vehicle_1"]
+        contributing_factor_vehicle_2 = row["contributing_factor_vehicle_2"]
+        contributing_factor_vehicle_3 = row["contributing_factor_vehicle_3"]
+        contributing_factor_vehicle_4 = row["contributing_factor_vehicle_4"]
+        contributing_factor_vehicle_5 = row["contributing_factor_vehicle_5"]
+        collision_id = row["collision_id"]
+        vehicle_type_code1 = row["vehicle_type_code1"]
+        vehicle_type_code2 = row["vehicle_type_code2"]
+        vehicle_type_code_3 = row["vehicle_type_code_3"]
+        vehicle_type_code_4 = row["vehicle_type_code_4"]
+        vehicle_type_code_5 = row["vehicle_type_code_5"]
 
-      #   next if BicycleCounter.find_by(original_id: original_id).present?
+        next if MotorVehicleCollisionsCrash.find_by(collision_id: collision_id).present?
 
-      #   BicycleCounter.create!(
-      #     original_id: original_id,
-      #     name: name,
-      #     domain: domain,
-      #     latitude: latitude,
-      #     longitude: longitude,
-      #     interval: interval,
-      #     timezone: timezone,
-      #     sens: sens,
-      #     counter: counter
-      #   )
-      # end
+        MotorVehicleCollisionsCrash.create!(
+          crash_date: crash_date,
+          crash_time: crash_time,
+          borough: borough,
+          zip_code: zip_code,
+          latitude: latitude,
+          longitude: longitude,
+          on_street_name: on_street_name,
+          off_street_name: off_street_name,
+          number_of_persons_injured: number_of_persons_injured,
+          number_of_persons_killed: number_of_persons_killed,
+          number_of_pedestrians_injured: number_of_pedestrians_injured,
+          number_of_pedestrians_killed: number_of_pedestrians_killed,
+          number_of_cyclist_injured: number_of_cyclist_injured,
+          number_of_cyclist_killed: number_of_cyclist_killed,
+          number_of_motorist_injured: number_of_motorist_injured,
+          number_of_motorist_killed: number_of_motorist_killed,
+          contributing_factor_vehicle_1: contributing_factor_vehicle_1,
+          contributing_factor_vehicle_2: contributing_factor_vehicle_2,
+          contributing_factor_vehicle_3: contributing_factor_vehicle_3,
+          contributing_factor_vehicle_4: contributing_factor_vehicle_4,
+          contributing_factor_vehicle_5: contributing_factor_vehicle_5,
+          collision_id: collision_id,
+          vehicle_type_code1: vehicle_type_code1,
+          vehicle_type_code2: vehicle_type_code2,
+          vehicle_type_code_3: vehicle_type_code_3,
+          vehicle_type_code_4: vehicle_type_code_4,
+          vehicle_type_code_5: vehicle_type_code_5
+        )
+      end
     end
     private_class_method :import_soda2
   end
