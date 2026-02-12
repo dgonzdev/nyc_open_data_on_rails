@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_12_23_031248) do
+ActiveRecord::Schema[7.2].define(version: 2026_02_11_012939) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -27,6 +27,41 @@ ActiveRecord::Schema[7.2].define(version: 2025_12_23_031248) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["original_id"], name: "index_bicycle_counters_on_original_id", unique: true
+  end
+
+  create_table "motor_vehicle_collisions_crashes", force: :cascade do |t|
+    t.datetime "crash_date"
+    t.datetime "crash_time"
+    t.string "borough"
+    t.string "zip_code"
+    t.decimal "latitude"
+    t.decimal "longitude"
+    t.jsonb "location"
+    t.string "on_street_name"
+    t.string "off_street_name"
+    t.string "cross_street_name"
+    t.integer "number_of_persons_injured"
+    t.integer "number_of_persons_killed"
+    t.integer "number_of_pedestrians_injured"
+    t.integer "number_of_pedestrians_killed"
+    t.integer "number_of_cyclist_injured"
+    t.integer "number_of_cyclist_killed"
+    t.integer "number_of_motorist_injured"
+    t.integer "number_of_motorist_killed"
+    t.string "contributing_factor_vehicle_1"
+    t.string "contributing_factor_vehicle_2"
+    t.string "contributing_factor_vehicle_3"
+    t.string "contributing_factor_vehicle_4"
+    t.string "contributing_factor_vehicle_5"
+    t.bigint "collision_id"
+    t.string "vehicle_type_code1"
+    t.string "vehicle_type_code2"
+    t.string "vehicle_type_code_3"
+    t.string "vehicle_type_code_4"
+    t.string "vehicle_type_code_5"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["collision_id"], name: "index_motor_vehicle_collisions_crashes_on_collision_id", unique: true
   end
 
   create_table "nyc_permitted_event_information_historicals", force: :cascade do |t|
