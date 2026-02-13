@@ -51,17 +51,31 @@ Website:
 
 Ruby on Rails supports connecting to multiple databases.
 
-Documentation
+Documentation:
 - https://guides.rubyonrails.org/active_record_multiple_databases.html
 
 ## Kiba
 
-TODO
+Kiba is a data processing & ETL framework for Ruby.
+
+Source Code:
+- https://github.com/thbar/kiba
+
+Documentation:
+- https://github.com/thbar/kiba/wiki
 
 ## BI
 
-TODO
+Business Intelligence (BI) software comprises tools that collect, analyze, and visualize data from various sources to provide actionable insights for decision-making.
+
+Open source solutions include
+- Apache Superset
+- Metabase
+- And many more
 
 ## Apache Superset
 
-TODO
+Apache Superset™ is an open-source modern data exploration and visualization platform.
+
+Website:
+- https://superset.apache.org/
