@@ -30,6 +30,9 @@ Website:
 Tutorial:
 - https://www.theodinproject.com/paths/full-stack-ruby-on-rails/courses/ruby
 
+Source Code:
+- https://github.com/ruby/ruby
+
 ## Ruby on Rails
 
 Rails is a web application framework that includes everything needed to create database-backed web applications.
@@ -40,12 +43,18 @@ Website:
 Tutorial:
 - https://www.theodinproject.com/paths/full-stack-ruby-on-rails/courses/ruby-on-rails
 
+Source Code:
+- https://github.com/rails/rails
+
 ## Postgres
 
 PostgreSQL is a powerful, open source object-relational database system with over 35 years of active development that has earned it a strong reputation for reliability, feature robustness, and performance.
 
 Website:
 - https://www.postgresql.org/
+
+Source Code:
+- https://github.com/postgres/postgres
 
 ## Multiple databases
 
@@ -58,11 +67,11 @@ Documentation:
 
 Kiba is a data processing & ETL framework for Ruby.
 
+Website:
+- https://www.kiba-etl.org/
+
 Source Code:
 - https://github.com/thbar/kiba
-
-Documentation:
-- https://github.com/thbar/kiba/wiki
 
 ## BI
 
@@ -79,3 +88,6 @@ Apache Superset™ is an open-source modern data exploration and visualization p
 
 Website:
 - https://superset.apache.org/
+
+Source Code:
+- https://github.com/apache/superset
