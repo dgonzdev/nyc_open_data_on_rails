@@ -67,4 +67,4 @@ TLDR:
 - Make your changes
 - Submit a pull request
 
-The [contributing document](docs/CONTRIBUTING.md) explains more.
+The [contributing document](docs/CONTRIBUTING.md) provides more information.

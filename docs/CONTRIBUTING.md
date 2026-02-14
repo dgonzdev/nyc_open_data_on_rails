@@ -30,8 +30,13 @@
   - date_made_public
   - category
   - tags
-- Add the public class import method and the following private class methods
-  - import_soda2
-  - import_soda2_csv
-  - import_soda3
-  - import_soda3_csv
+- Add the following import class methods:
+  - import (public)
+  - import_soda2 (private)
+  - import_soda2_csv (private)
+  - import_soda3 (private)
+  - import_soda3_csv (private)
+
+## Adding New ETL Workflows
+
+TODO
